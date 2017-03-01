@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CoverEvi.iml" filepath="$PROJECT_DIR$/CoverEvi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cover-evi.iml" filepath="$PROJECT_DIR$/cover-evi.iml" />
     </modules>
   </component>
 </project>
