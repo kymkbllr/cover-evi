@@ -8,11 +8,14 @@
     android:padding="15dp"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <HorizontalScrollView
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:layout_height="match_parent"
-        android:layout_weight="1">
-    </HorizontalScrollView>
+        android:orientation="horizontal"
+        android:id="@+id/rcYoutube"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
     <TextView
        android:layout_width="match_parent"
@@ -26,7 +29,8 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:layout_weight="1"
-        android:numColumns="2">
+        android:numColumns="2"
+        android:id="@+id/gdHaber">
    </GridView>
 
 <LinearLayout
@@ -41,7 +45,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
-
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/play"
+    android:adjustViewBounds="true" />
     </LinearLayout>
 
     <LinearLayout
