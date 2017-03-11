@@ -27,9 +27,7 @@ public class YoutubeAdapter extends RecyclerView.Adapter {
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.haber_item, null);
-//YUTUBUN İÇİ BOŞ
-
+        View view = layoutInflater.inflate(R.layout.youtube_item, null);
 
         return new MyViewHolder(view);
     }

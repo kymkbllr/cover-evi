@@ -12,8 +12,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:id="@+id/rcYoutube"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
@@ -27,9 +26,9 @@
 
 
     <GridView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:numColumns="2"
         android:id="@+id/gdHaber">
    </GridView>
@@ -71,13 +70,38 @@
             android:text="Durum..."
             android:textColor="@color/colorgray" />
     </LinearLayout>
-
-
-
-
-
 </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/facebook"
+            android:background="@color/trans" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/twitter"
+            android:background="@color/trans"
+            />
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/instagram"
+            android:background="@color/trans"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/youtube"
+            android:background="@color/trans"/>
+
+    </LinearLayout>
 
 </LinearLayout>
 

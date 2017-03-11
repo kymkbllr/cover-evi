@@ -33,9 +33,6 @@ public class HaberAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.haber_item, null);
-
-
-
         return view;
     }
 }

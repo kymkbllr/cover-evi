@@ -6,5 +6,6 @@
     <color name="colorDark">#000000</color>
     <color name="colorwhite">#FFFFFF</color>
     <color name="colorgray">#8c8888</color>
+    <color name="trans">#00ffffff</color>
 </resources>
 
