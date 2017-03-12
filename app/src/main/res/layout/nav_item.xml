@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Button
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/nav_item"
+    android:text="anasayfa"
+    android:background="#ff000000"
+    android:textColor="#FFFFFF"
+    android:textAlignment="textStart"
+    android:paddingLeft="15dp" />
