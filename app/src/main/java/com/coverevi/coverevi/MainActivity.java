@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: GridView screen genişliğine göre otomatik ayarlanacak
-        GridView gridView = (GridView) findViewById(R.id.gdHaber);
-        HaberAdapter haberAdapter = new HaberAdapter(this );
-        gridView.setAdapter(haberAdapter);
 
         listView = (ListView) findViewById(R.id.navList);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -39,16 +36,24 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
-
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
+        // Burada ilk açılışta ekran gelir.
+        View view = getLayoutInflater().inflate(R.layout.anasayfa, null);
+
+        LinearLayout ana_layout = (LinearLayout) findViewById(R.id.ana_icerik);
+        ana_layout.addView(view);
+
+        // TODO: GridView screen genişliğine göre otomatik ayarlanacak
+        GridView gridView = (GridView) findViewById(R.id.gdHaber);
+        HaberAdapter haberAdapter = new HaberAdapter(this );
+        gridView.setAdapter(haberAdapter);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rcYoutube);
         recyclerView.setLayoutManager(layoutManager);
         YoutubeAdapter youtubeAdapter = new YoutubeAdapter(this);
         recyclerView.setAdapter(youtubeAdapter);
-
 
     }
 

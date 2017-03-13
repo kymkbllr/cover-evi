@@ -2,6 +2,7 @@ package com.coverevi.coverevi;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 public class NavigationDrawer extends BaseAdapter{
 
+    private Activity activity;
     private LayoutInflater layoutInflater;
     private String [] menuogeleri;
 
@@ -20,8 +22,11 @@ public class NavigationDrawer extends BaseAdapter{
                 "hakkımızda",
                 "iletişim",
                 "çekimlerimiz",
-                "etkinlikler"
+                "etkinlikler",
+                "coverlar"
         };
+
+        this.activity = activity;
     }
 
     @Override
@@ -40,12 +45,28 @@ public class NavigationDrawer extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.nav_item, null);
 
         Button btn = (Button) view.findViewById(R.id.nav_item);
         btn.setText(menuogeleri[position]);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
 
+                switch (position) {
+                    default: intent = new Intent(activity, MainActivity.class); break;
+                    case 1: intent = new Intent(activity, hakkimizda.class); break;
+                    case 2: intent = new Intent(activity, iletisim.class); break;
+                    case 3: intent = new Intent(activity, cekimlerimiz.class); break;
+                    case 4: intent = new Intent(activity, etkinlikler.class); break;
+                    case 5: intent = new Intent(activity, coverlar.class); break;
+                }
+
+                activity.startActivity(intent);
+            }
+        });
         return view;
 
     }
