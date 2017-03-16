@@ -19,11 +19,11 @@ public class NavigationDrawer extends BaseAdapter{
         layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         menuogeleri= new String[] {
                 "anasayfa",
-                "hakkımızda",
-                "iletişim",
+                "coverlar",
                 "çekimlerimiz",
                 "etkinlikler",
-                "coverlar"
+                "hakkımızda",
+                "iletişim",
         };
 
         this.activity = activity;
@@ -57,16 +57,17 @@ public class NavigationDrawer extends BaseAdapter{
 
                 switch (position) {
                     default: intent = new Intent(activity, MainActivity.class); break;
-                    case 1: intent = new Intent(activity, hakkimizda.class); break;
-                    case 2: intent = new Intent(activity, iletisim.class); break;
-                    case 3: intent = new Intent(activity, cekimlerimiz.class); break;
-                    case 4: intent = new Intent(activity, etkinlikler.class); break;
-                    case 5: intent = new Intent(activity, coverlar.class); break;
+                    case 1: intent = new Intent(activity, coverlar.class); break;
+                    case 2: intent = new Intent(activity, cekimlerimiz.class); break;
+                    case 3: intent = new Intent(activity, etkinlikler.class); break;
+                    case 4: intent = new Intent(activity, hakkimizda.class); break;
+                    case 5: intent = new Intent(activity, iletisim.class); break;
                 }
 
                 activity.startActivity(intent);
             }
         });
+
         return view;
 
     }

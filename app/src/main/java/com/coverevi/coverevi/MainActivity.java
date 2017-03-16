@@ -1,6 +1,5 @@
 package com.coverevi.coverevi;
 
-import android.app.ActionBar;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         listView = (ListView) findViewById(R.id.navList);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
@@ -37,24 +35,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // TODO: GridView screen genişliğine göre otomatik ayarlanacak
-        GridView gridView = (GridView) findViewById(R.id.gdHaber);
-        HaberAdapter haberAdapter = new HaberAdapter(this );
-        gridView.setAdapter(haberAdapter);
+        GridView gdHaber = (GridView) findViewById(R.id.gdHaber);
+        gdHaber.setAdapter(new HaberAdapter(this));
 
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView rcYoutube = (RecyclerView) findViewById(R.id.rcYoutube);
+        rcYoutube.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcYoutube.setAdapter(new YoutubeAdapter(this));
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rcYoutube);
-        recyclerView.setLayoutManager(layoutManager);
-        YoutubeAdapter youtubeAdapter = new YoutubeAdapter(this);
-        recyclerView.setAdapter(youtubeAdapter);
+        RecyclerView rcEtkinlik = (RecyclerView) findViewById(R.id.rcEtkinlik);
+        rcEtkinlik.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcEtkinlik.setAdapter(new EtkinlikAdapter(this));
 
-        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.action_bar_header);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(0xff1f1d20));
-
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xff000000));
     }
 
     private void setupDrawer() {
