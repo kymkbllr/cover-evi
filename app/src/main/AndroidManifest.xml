@@ -8,10 +8,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -19,7 +18,7 @@
         <activity android:name=".iletisim" />
         <activity android:name=".coverlar" />
         <activity android:name=".cekimlerimiz" />
-        <activity android:name=".etkinlikler"></activity>
+        <activity android:name=".etkinlikler" />
     </application>
 
 </manifest>
