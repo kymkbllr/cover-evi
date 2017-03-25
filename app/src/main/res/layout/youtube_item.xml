@@ -10,12 +10,13 @@
         android:layout_width="100dp"
         android:layout_marginRight="7dp">
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/ivYoutube"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/resim"
-            android:id="@+id/ivYoutube"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="false"
+            android:background="@color/trans"
+            android:src="@drawable/resim" />
 
 
 

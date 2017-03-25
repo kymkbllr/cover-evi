@@ -2,11 +2,14 @@ package com.coverevi.coverevi.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.coverevi.coverevi.R;
@@ -57,8 +60,15 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Picasso.with(activity.getApplicationContext()).load(coverItemList.get(position).thumbnail).into(holder.imageView);
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+        Picasso.with(activity.getApplicationContext()).load(coverItemList.get(position).thumbnail).into(holder.imageBtn);
+        holder.imageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://youtu.be/" + coverItemList.get(position).youtube_id));
+                activity.startActivity(browserIntent);
+            }
+        });
     }
 
     @Override
@@ -67,11 +77,11 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
+        public ImageButton imageBtn;
 
         public MyViewHolder(View view) {
             super(view);
-            imageView = (ImageView) view.findViewById(R.id.ivYoutube);
+            imageBtn = (ImageButton) view.findViewById(R.id.ivYoutube);
         }
     }
 
