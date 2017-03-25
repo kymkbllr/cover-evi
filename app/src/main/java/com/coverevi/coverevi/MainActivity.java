@@ -2,16 +2,20 @@ package com.coverevi.coverevi;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ListView;
+
+import com.coverevi.coverevi.HTTP.HttpHandler;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -26,25 +30,17 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.navList);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
+        setupActionBar();
         addDrawerItems();
         setupDrawer();
+    }
+
+    private void setupActionBar() {
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        // TODO: GridView screen genişliğine göre otomatik ayarlanacak
-        GridView gdHaber = (GridView) findViewById(R.id.gdHaber);
-        gdHaber.setAdapter(new HaberAdapter(this));
-
-        RecyclerView rcYoutube = (RecyclerView) findViewById(R.id.rcYoutube);
-        rcYoutube.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        rcYoutube.setAdapter(new YoutubeAdapter(this));
-
-        RecyclerView rcEtkinlik = (RecyclerView) findViewById(R.id.rcEtkinlik);
-        rcEtkinlik.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        rcEtkinlik.setAdapter(new EtkinlikAdapter(this));
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.action_bar_header);

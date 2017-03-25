@@ -1,4 +1,4 @@
-package com.coverevi.coverevi;
+package com.coverevi.coverevi.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,10 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
+import com.coverevi.coverevi.R;
 
-public class YoutubeAdapter extends RecyclerView.Adapter {
+/**
+ * Created by cezvedici on 16.03.2017.
+ */
+
+public class EtkinlikAdapter extends RecyclerView.Adapter {
 
     private LayoutInflater layoutInflater;
 
@@ -21,7 +25,7 @@ public class YoutubeAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public YoutubeAdapter(Activity activity){
+    public EtkinlikAdapter(Activity activity){
         layoutInflater =(LayoutInflater) activity.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -42,5 +46,3 @@ public class YoutubeAdapter extends RecyclerView.Adapter {
         return 4;
     }
 }
-
-
