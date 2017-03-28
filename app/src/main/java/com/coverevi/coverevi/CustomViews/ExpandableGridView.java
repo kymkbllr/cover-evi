@@ -1,9 +1,5 @@
 package com.coverevi.coverevi.CustomViews;
 
-/**
- * Created by cezvedici on 25.03.2017.
- */
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup;

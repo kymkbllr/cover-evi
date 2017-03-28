@@ -1,21 +1,20 @@
 package com.coverevi.coverevi;
 
 import android.content.res.Configuration;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
-import com.coverevi.coverevi.HTTP.HttpHandler;
+import com.coverevi.coverevi.Misc.DPPXConverter;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -42,11 +41,31 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.action_bar_header);
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setBackgroundDrawable(new ColorDrawable(0xff000000));
+
+        final RelativeLayout logoRelativeLayout = (RelativeLayout) actionBar.getCustomView().findViewById(R.id.cover_evi_logo_container);
+
+        logoRelativeLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                ImageView logoImageView = (ImageView) actionBar.getCustomView().findViewById(R.id.cover_evi_header_logo);
+                int imageWidth = logoImageView.getDrawable().getIntrinsicWidth();
+
+                Point point = new Point();
+                getWindowManager().getDefaultDisplay().getSize(point);
+
+                int screenWidth = point.x;
+
+                int measuredPadding = ((screenWidth - imageWidth) / 2) - (int) (DPPXConverter.convertDpToPixel(72, getApplicationContext())) ;
+
+                logoRelativeLayout.setPadding(measuredPadding, 0, 0, 0);
+
+            }
+        });
     }
 
     private void setupDrawer() {
