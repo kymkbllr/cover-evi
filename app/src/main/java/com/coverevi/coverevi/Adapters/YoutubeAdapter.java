@@ -4,14 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.coverevi.coverevi.Misc.DPPXConverter;
 import com.coverevi.coverevi.R;
 import com.squareup.picasso.Picasso;
 
@@ -61,7 +65,9 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
+
         Picasso.with(activity.getApplicationContext()).load(coverItemList.get(position).thumbnail).into(holder.imageBtn);
+
         holder.imageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +75,19 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
                 activity.startActivity(browserIntent);
             }
         });
+
+        // son itemin margini 0 olacak
+        if (position == coverItemList.size() - 1) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    (int) DPPXConverter.convertDpToPixel(100, activity.getApplicationContext()),
+                    LinearLayout.LayoutParams.MATCH_PARENT
+            );
+
+            // left top right bottom
+            params.setMargins(0, 0, 0, 0);
+
+            holder.cardView.setLayoutParams(params);
+        }
     }
 
     @Override
@@ -78,10 +97,12 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageButton imageBtn;
+        public CardView cardView;
 
         public MyViewHolder(View view) {
             super(view);
             imageBtn = (ImageButton) view.findViewById(R.id.ivYoutube);
+            cardView = (CardView) view.findViewById(R.id.cwYoutube);
         }
     }
 

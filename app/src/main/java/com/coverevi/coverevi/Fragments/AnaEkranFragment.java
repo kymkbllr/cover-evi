@@ -25,14 +25,6 @@ public class AnaEkranFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ana_ekran, container, false);
 
-        ExpandableGridView gdHaber = (ExpandableGridView) view.findViewById(R.id.gdHaber);
-        gdHaber.setExpanded(true);
-        gdHaber.setAdapter(new HaberAdapter(getActivity()));
-
-        ExpandableGridView gdTest = (ExpandableGridView) view.findViewById(R.id.gdTest);
-        gdTest.setExpanded(true);
-        gdTest.setAdapter(new HaberAdapter(getActivity()));
-
         return view;
     }
 
@@ -40,6 +32,7 @@ public class AnaEkranFragment extends Fragment {
     public void onStart() {
         super.onStart();
         new CoverlariGetir().execute();
+        new HaberleriGetir().execute();
     }
 
     private class CoverlariGetir extends AsyncTask<Void, Void, Void> {
@@ -56,6 +49,25 @@ public class AnaEkranFragment extends Fragment {
         protected Void doInBackground(Void... params) {
             HttpHandler httpHandler = new HttpHandler("http://coverevi.com/api/youtube_getir.php");
             this.YouTubeResponse = httpHandler.createGETRequest();
+
+            return null;
+        }
+    }
+
+    private class HaberleriGetir extends AsyncTask<Void, Void, Void> {
+        private String HaberResponse;
+
+        @Override
+        protected void onPostExecute(Void activity) {
+            ExpandableGridView gdHaber = (ExpandableGridView) view.findViewById(R.id.gdHaber);
+            gdHaber.setExpanded(true);
+            gdHaber.setAdapter(new HaberAdapter(getActivity(), this.HaberResponse));
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            HttpHandler httpHandler = new HttpHandler("http://coverevi.com/api/haber_getir.php");
+            this.HaberResponse = httpHandler.createGETRequest();
 
             return null;
         }
