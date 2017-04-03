@@ -1,4 +1,4 @@
-package com.coverevi.coverevi;
+package com.coverevi.coverevi.Misc;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+
+import com.coverevi.coverevi.MainActivity;
+import com.coverevi.coverevi.R;
+import com.coverevi.coverevi.Activities.cekimlerimiz;
+import com.coverevi.coverevi.Activities.coverlar;
+import com.coverevi.coverevi.Activities.etkinlikler;
+import com.coverevi.coverevi.Activities.hakkimizda;
+import com.coverevi.coverevi.Activities.iletisim;
 
 public class NavigationDrawer extends BaseAdapter{
 

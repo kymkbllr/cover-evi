@@ -1,13 +1,15 @@
-package com.coverevi.coverevi;
+package com.coverevi.coverevi.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class hakkimizda extends AppCompatActivity {
+import com.coverevi.coverevi.R;
+
+public class cekimlerimiz extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hakkimizda);
+        setContentView(R.layout.activity_cekimlerimiz);
     }
 }

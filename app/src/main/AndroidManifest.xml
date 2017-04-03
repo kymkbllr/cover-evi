@@ -3,6 +3,7 @@
     package="com.coverevi.coverevi">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,11 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".hakkimizda" />
-        <activity android:name=".iletisim" />
-        <activity android:name=".coverlar" />
-        <activity android:name=".cekimlerimiz" />
-        <activity android:name=".etkinlikler" />
+        <activity android:name=".Activities.hakkimizda" />
+        <activity android:name=".Activities.iletisim" />
+        <activity android:name=".Activities.coverlar" />
+        <activity android:name=".Activities.cekimlerimiz" />
+        <activity android:name=".Activities.etkinlikler" />
 
     </application>
 </manifest>
