@@ -15,7 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.coverevi.coverevi.Adapters.EtkinlikAdapter;
 import com.coverevi.coverevi.Adapters.HaberAdapter;
 import com.coverevi.coverevi.Adapters.YoutubeAdapter;
 import com.coverevi.coverevi.CustomViews.ExpandableGridView;
@@ -44,11 +47,10 @@ public class AnaEkranFragment extends Fragment {
         super.onStart();
 
         /* Başlamadan önce internet bağlantısını kontrol edelim */
-
         if (!Connectivity.isNetworkAvailable(getActivity())) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-            builder.setMessage("Cover Evi çalışmak için internet bağlantısına ihtiyaç duyar. Lütfen internet bağlantısını aktif edip tekrar deneyin.")
+            builder.setMessage("Cover Evi çalışmak için internet bağlantısına ihtiyaç duyar. İnternet bağlantınızı aktif edip tekrar deneyin.")
                     .setCancelable(false)
                     .setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
                         @Override
@@ -63,6 +65,7 @@ public class AnaEkranFragment extends Fragment {
 
         new CoverlariGetir().execute();
         new HaberleriGetir().execute();
+        new EtkinlikGetir().execute();
     }
 
     public void decreaseLoadCount() {
@@ -108,6 +111,34 @@ public class AnaEkranFragment extends Fragment {
         protected Void doInBackground(Void... params) {
             HttpHandler httpHandler = new HttpHandler("http://coverevi.com/api/haber_getir.php");
             this.HaberResponse = httpHandler.createGETRequest();
+
+            return null;
+        }
+    }
+
+    private class EtkinlikGetir extends AsyncTask<Void, Void, Void> {
+        private String EtkinlikResponse;
+
+        @Override
+        protected void onPostExecute(Void activity) {
+            ListView lvEtkinlik = (ListView) view.findViewById(R.id.lvEtkinlik);
+            lvEtkinlik.setAdapter(new EtkinlikAdapter(getActivity(), this.EtkinlikResponse));
+
+            lvEtkinlik.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getActivity().getApplicationContext(), "You've clicked on item position: " + position + ", id: " + id, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+            decreaseLoadCount();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            HttpHandler httpHandler = new HttpHandler("http://coverevi.com/api/etkinlik_getir.php");
+            this.EtkinlikResponse = httpHandler.createGETRequest();
 
             return null;
         }

@@ -48,6 +48,11 @@
             android:textColor="@color/colorwhite"
             tools:textStyle="bold" />
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lvEtkinlik" />
+
         <com.coverevi.coverevi.CustomViews.ExpandableGridView
             android:id="@+id/gdTest"
             android:layout_width="match_parent"
