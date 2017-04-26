@@ -1,9 +1,11 @@
 package com.coverevi.coverevi;
 
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.coverevi.coverevi.Fragments.AnaEkranFragment;
 import com.coverevi.coverevi.Misc.DPPXConverter;
 import com.coverevi.coverevi.Misc.NavigationDrawer;
 
@@ -20,7 +23,7 @@ import com.coverevi.coverevi.Misc.NavigationDrawer;
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
         setupActionBar();
         addDrawerItems();
         setupDrawer();
+
+        //ana ekran fragmentini başlat
+        FragmentManager f = getFragmentManager();
+        FragmentTransaction ft = f.beginTransaction();
+
+        AnaEkranFragment a = new AnaEkranFragment();
+        ft.add(R.id.anaicerik_fragment, a, "ana ekran");
+        ft.addToBackStack("ana ekran");
+        ft.commit();
+
     }
 
     private void setupActionBar() {
@@ -119,5 +132,14 @@ public class MainActivity extends AppCompatActivity {
         // Activate the navigation drawer toggle
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

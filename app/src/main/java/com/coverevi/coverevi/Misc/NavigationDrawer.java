@@ -1,21 +1,22 @@
 package com.coverevi.coverevi.Misc;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
+import android.app.Fragment;
+
+import com.coverevi.coverevi.Fragments.*;
 import com.coverevi.coverevi.MainActivity;
 import com.coverevi.coverevi.R;
-import com.coverevi.coverevi.Activities.cekimlerimiz;
-import com.coverevi.coverevi.Activities.coverlar;
-import com.coverevi.coverevi.Activities.etkinlikler;
-import com.coverevi.coverevi.Activities.hakkimizda;
-import com.coverevi.coverevi.Activities.iletisim;
 
 public class NavigationDrawer extends BaseAdapter{
 
@@ -61,18 +62,54 @@ public class NavigationDrawer extends BaseAdapter{
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent;
+                //ana ekran fragmentini başlat
+                FragmentManager f = activity.getFragmentManager();
+                FragmentTransaction ft = f.beginTransaction();
 
-                switch (position) {
-                    default: intent = new Intent(activity, MainActivity.class); break;
-                    case 1: intent = new Intent(activity, coverlar.class); break;
-                    case 2: intent = new Intent(activity, cekimlerimiz.class); break;
-                    case 3: intent = new Intent(activity, etkinlikler.class); break;
-                    case 4: intent = new Intent(activity, hakkimizda.class); break;
-                    case 5: intent = new Intent(activity, iletisim.class); break;
-                }
+                Fragment a;
+                String tag;
 
-                activity.startActivity(intent);
+                    switch (position){
+                        case 1: {
+                            a = new Coverlar();
+                            tag = "Coverlar";
+                            break;
+                        }
+                        case 2: {
+                            a = new Cekimlerimiz();
+                            tag = "Çekimlerimiz";
+                            break;
+                        }
+                        case 3: {
+                            a = new Etkinlikler();
+                            tag = "Etkinlikler";
+                            break;
+                        }
+                        case 4: {
+                            a = new Hakkimizda();
+                            tag = "Hakkımızda";
+                            break;
+                        }
+                        case 5: {
+                            a = new İletisim();
+                            tag = "İletişim";
+                            break;
+                        }
+                        default : {
+                            a = new AnaEkranFragment();
+                            tag = "AnaEkranFragment";
+                            break;
+                        }
+                    }
+
+                ft.replace(R.id.anaicerik_fragment, a, tag);
+                ft.addToBackStack(tag);
+                ft.commit();
+
+
+                //menü itemine bastıktan sonra drawer kapanmıyor.
+                DrawerLayout drawerLayout = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
             }
         });
 

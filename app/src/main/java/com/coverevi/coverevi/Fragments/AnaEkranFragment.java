@@ -36,8 +36,10 @@ public class AnaEkranFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ana_ekran, container, false);
 
-        progressDialog = ProgressDialog.show(getActivity(), "Yükleniyor...", "İçerik yüklenirken lütfen bekleyin!");
-        progressDialog.setCancelable(false);
+        if (leftToLoadCount > 0) {
+            progressDialog = ProgressDialog.show(getActivity(), "Yükleniyor...", "İçerik yüklenirken lütfen bekleyin!");
+            progressDialog.setCancelable(false);
+        }
 
         return view;
     }

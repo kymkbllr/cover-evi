@@ -12,10 +12,9 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <fragment
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.coverevi.coverevi.Fragments.AnaEkranFragment"
             android:id="@+id/anaicerik_fragment"/>
 
     </LinearLayout>
