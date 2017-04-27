@@ -19,7 +19,6 @@ import com.coverevi.coverevi.Fragments.AnaEkranFragment;
 import com.coverevi.coverevi.Misc.DPPXConverter;
 import com.coverevi.coverevi.Misc.NavigationDrawer;
 
-
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -105,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     private void addDrawerItems() {
         NavigationDrawer adapter = new NavigationDrawer(this);
         listView.setAdapter(adapter);
-
     }
 
     @Override

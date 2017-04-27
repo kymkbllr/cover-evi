@@ -25,7 +25,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHolder> {
     private LayoutInflater layoutInflater;
     private ArrayList<CoverItem> coverItemList;
@@ -35,6 +34,7 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
         this.activity = activity;
         layoutInflater =(LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         coverItemList = new ArrayList<>();
+
 
         try {
             JSONObject oCover = new JSONObject(response);
