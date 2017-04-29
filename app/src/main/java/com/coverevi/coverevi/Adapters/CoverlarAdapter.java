@@ -23,7 +23,7 @@ public class CoverlarAdapter implements ListAdapter {
     private Map<Integer, String> turler;
 
     public static Integer [] catIds = {
-            30, 31, 4, 25, 24, 23, 26, 14, 22, 21, 13, 12
+            4, 30, 31, 25, 24, 23, 26, 14, 22, 21, 13, 12
     };
 
     private Map<Integer, String> responses;

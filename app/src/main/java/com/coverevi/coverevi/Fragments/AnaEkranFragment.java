@@ -124,15 +124,7 @@ public class AnaEkranFragment extends Fragment {
         @Override
         protected void onPostExecute(Void activity) {
             ListView lvEtkinlik = (ListView) view.findViewById(R.id.lvEtkinlik);
-            lvEtkinlik.setAdapter(new EtkinlikAdapter(getActivity(), this.EtkinlikResponse));
-
-            lvEtkinlik.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(getActivity().getApplicationContext(), "You've clicked on item position: " + position + ", id: " + id, Toast.LENGTH_SHORT).show();
-                }
-            });
-
+            lvEtkinlik.setAdapter(new EtkinlikAdapter(getActivity(), this.EtkinlikResponse, 0));
 
             decreaseLoadCount();
         }
