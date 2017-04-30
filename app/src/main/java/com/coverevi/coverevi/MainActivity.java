@@ -1,28 +1,58 @@
 package com.coverevi.coverevi;
 
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.FragmentManager;
+import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.coverevi.coverevi.Fragments.AnaEkranFragment;
+import com.coverevi.coverevi.HTTP.HttpHandler;
 import com.coverevi.coverevi.Misc.DPPXConverter;
 import com.coverevi.coverevi.Misc.NavigationDrawer;
+import com.coverevi.coverevi.Services.StreamService;
+
+import org.json.JSONObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private ActionBarDrawerToggle mDrawerToggle;
     public DrawerLayout drawerLayout;
+    private Intent streamService;
+
+    ImageButton fb, tw, in, yt;
+    TextView durum, calanparca;
+
+    boolean isPlaying = false;
+
+    MyReceiver myReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +75,58 @@ public class MainActivity extends AppCompatActivity {
         ft.addToBackStack("ana ekran");
         ft.commit();
 
+        /*
+        Sosyal medya ikonlarının tıklanabilirlik özelliği aşağıda işlenmiştir.
+         */
+
+        fb = (ImageButton) findViewById(R.id.facebook);
+        tw = (ImageButton) findViewById(R.id.twitter);
+        in = (ImageButton) findViewById(R.id.instagram);
+        yt = (ImageButton) findViewById(R.id.youtube);
+
+        durum = (TextView) findViewById(R.id.playerDurum);
+        durum.setText("Radyoyu başlatmak için sağdaki butona basın.");
+
+        calanparca = (TextView) findViewById(R.id.currentplaying);
+        calanparca.setText("Çalan parça bilgisi getiriliyor..");
+
+        streamService = new Intent(MainActivity.this, StreamService.class);
+
+        registerReceiver();
+
+        Timer updateSongTimer = new Timer();
+        updateSongTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                new UpdateCurrentSong().execute();
+            }
+        }, 0, 2 * 1000);
+    }
+
+    private void registerReceiver() {
+        myReceiver = new MyReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(StreamService.CONTROL_STATUS);
+        registerReceiver(myReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        unregisterReceiver(myReceiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(myReceiver);
+        stopService(streamService);
     }
 
     private void setupActionBar() {
@@ -138,6 +220,74 @@ public class MainActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    public void sosyalMedya(View view) {
+        String URL;
+
+        if (view.getId() == fb.getId()) {
+            URL = "https://www.facebook.com/coverevi";
+        } else if (view.getId() == tw.getId()) {
+            URL = "https://twitter.com/coverevioffical";
+        } else if (view.getId() == in.getId()) {
+            URL = "https://www.instagram.com/coverevioffical/";
+        } else {
+            URL = "https://www.youtube.com/channel/UC1lXVf7UkxY09-DhXDXXBsg";
+        }
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL));
+        startActivity(browserIntent);
+    }
+
+    public void controlPlayer(View view) {
+        Drawable drawable;
+
+        isPlaying = !isPlaying;
+
+        if (isPlaying) {
+            drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.stop);
+            startService(streamService);
+            durum.setText("Bağlanıyor..");
+        } else {
+            drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.play);
+            stopService(streamService);
+            durum.setText("Durduruldu.");
+        }
+
+        ImageView view1 = (ImageView) findViewById(R.id.playpausebutton);
+        view1.setImageDrawable(drawable);
+    }
+
+    public class MyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(StreamService.CONTROL_STATUS))
+            {
+                durum.setText(intent.getStringExtra("message"));
+            }
+        }
+    }
+
+    public class UpdateCurrentSong extends AsyncTask<Void, Void, Void> {
+        String response;
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                calanparca.setText(jsonObject.getString("song"));
+            } catch (org.json.JSONException e) {
+                Log.i("CALANPARCA", e.getMessage());
+            }
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            HttpHandler httpHandler = new HttpHandler("http://www.coverevi.com/api/sc_api/sc_api.php");
+            this.response = httpHandler.createGETRequest();
+
+            return null;
         }
     }
 }

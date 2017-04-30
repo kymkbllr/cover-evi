@@ -11,17 +11,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.hakkimizda" />
-        <activity android:name=".Activities.iletisim" />
-        <activity android:name=".Activities.coverlar" />
-        <activity android:name=".Activities.cekimlerimiz" />
-        <activity android:name=".Activities.etkinlikler" />
+
+        <service
+            android:name=".Services.StreamService"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:process=":coverevi_streamservice" >
+        </service>
 
     </application>
 </manifest>

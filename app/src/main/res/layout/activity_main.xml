@@ -5,19 +5,72 @@
     android:layout_width="match_parent"
     android:id="@+id/drawer_layout">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorDark"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/anaicerik_fragment"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/anaicerik_fragment"
+            android:padding="15dp" />
 
-    </LinearLayout>
+        <!-- Player -->
+        <LinearLayout
+            android:id="@+id/playerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#010101"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingEnd="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/playpausebutton"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/play"
+                    android:onClick="controlPlayer"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Çalan Şarkı"
+                    android:textColor="@color/colorwhite"
+                    android:id="@+id/currentplaying"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Durduruldu."
+                    android:textColor="@color/colorgray"
+                    android:id="@+id/playerDurum"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <!-- Sağ menü -->
     <RelativeLayout
@@ -46,30 +99,35 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/facebook"
                 android:background="@color/trans"
-                android:layout_marginRight="3dp" />
+                android:layout_marginRight="3dp"
+                android:id="@+id/facebook"
+                android:onClick="sosyalMedya" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/twitter"
                 android:background="@color/trans"
-                android:layout_marginRight="3dp" />
+                android:layout_marginRight="3dp"
+                android:id="@+id/twitter"
+                android:onClick="sosyalMedya" />
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/instagram"
                 android:background="@color/trans"
-                android:layout_marginRight="3dp" />
+                android:layout_marginRight="3dp"
+                android:id="@+id/instagram"
+                android:onClick="sosyalMedya" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/youtube"
-                android:background="@color/trans"/>
+                android:background="@color/trans"
+                android:id="@+id/youtube"
+                android:onClick="sosyalMedya" />
 
         </LinearLayout>
-
-
     </RelativeLayout>
-
 </android.support.v4.widget.DrawerLayout>

@@ -29,7 +29,7 @@ public class NavigationDrawer extends BaseAdapter{
         menuogeleri= new String[] {
                 "anasayfa",
                 "coverlar",
-                "çekimlerimiz",
+                //"çekimlerimiz",
                 "etkinlikler",
                 "hakkımızda",
                 "iletişim",
@@ -75,22 +75,22 @@ public class NavigationDrawer extends BaseAdapter{
                             tag = "Coverlar";
                             break;
                         }
-                        case 2: {
+                        /*case 2: {
                             a = new Cekimlerimiz();
                             tag = "Çekimlerimiz";
                             break;
-                        }
-                        case 3: {
+                        }*/
+                        case 2: {
                             a = new Etkinlikler();
                             tag = "Etkinlikler";
                             break;
                         }
-                        case 4: {
+                        case 3: {
                             a = new Hakkimizda();
                             tag = "Hakkımızda";
                             break;
                         }
-                        case 5: {
+                        case 4: {
                             a = new İletisim();
                             tag = "İletişim";
                             break;

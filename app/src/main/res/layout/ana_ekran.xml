@@ -50,69 +50,8 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/lvEtkinlik" />
-
-        <com.coverevi.coverevi.CustomViews.ExpandableGridView
-            android:id="@+id/gdTest"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:horizontalSpacing="3dp"
-            android:numColumns="2"
-            android:verticalSpacing="3dp" />
 
     </LinearLayout>
 </ScrollView>
-<!--
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcYoutube"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:textAlignment="center"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="SON HABERLER"
-        android:textColor="@color/colorwhite"
-        tools:textStyle="bold" />
-
-    <GridView
-        android:id="@+id/gdHaber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:horizontalSpacing="3dp"
-        android:numColumns="2"
-        android:verticalSpacing="3dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="ETKİNLİKLER"
-        android:textColor="@color/colorwhite"
-        tools:textStyle="bold" />
-
-    <GridView
-        android:id="@+id/gdTest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:horizontalSpacing="3dp"
-        android:numColumns="2"
-        android:verticalSpacing="3dp" />
-</LinearLayout>
-
--->
