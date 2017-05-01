@@ -69,38 +69,38 @@ public class NavigationDrawer extends BaseAdapter{
                 Fragment a;
                 String tag;
 
-                    switch (position){
-                        case 1: {
-                            a = new Coverlar();
-                            tag = "Coverlar";
-                            break;
-                        }
+                switch (position){
+                    case 1: {
+                        a = new Coverlar();
+                        tag = "Coverlar";
+                        break;
+                    }
                         /*case 2: {
                             a = new Cekimlerimiz();
                             tag = "Çekimlerimiz";
                             break;
                         }*/
-                        case 2: {
-                            a = new Etkinlikler();
-                            tag = "Etkinlikler";
-                            break;
-                        }
-                        case 3: {
-                            a = new Hakkimizda();
-                            tag = "Hakkımızda";
-                            break;
-                        }
-                        case 4: {
-                            a = new İletisim();
-                            tag = "İletişim";
-                            break;
-                        }
-                        default : {
-                            a = new AnaEkranFragment();
-                            tag = "AnaEkranFragment";
-                            break;
-                        }
+                    case 2: {
+                        a = new Etkinlikler();
+                        tag = "Etkinlikler";
+                        break;
                     }
+                    case 3: {
+                        a = new Hakkimizda();
+                        tag = "Hakkımızda";
+                        break;
+                    }
+                    case 4: {
+                        a = new İletisim();
+                        tag = "İletişim";
+                        break;
+                    }
+                    default : {
+                        a = new AnaEkranFragment();
+                        tag = "AnaEkranFragment";
+                        break;
+                    }
+                }
 
                 ft.replace(R.id.anaicerik_fragment, a, tag);
                 ft.addToBackStack(tag);

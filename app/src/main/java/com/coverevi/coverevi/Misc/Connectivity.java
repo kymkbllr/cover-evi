@@ -2,7 +2,7 @@ package com.coverevi.coverevi.Misc;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-
+//internet bağlantısı olup olmadığını kontrol ediyor.
 public class Connectivity {
 
     public static boolean isNetworkAvailable(final Context context) {

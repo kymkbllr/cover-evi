@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="İsim ve Soyisim"
+        android:textColor="@color/colorwhite"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/isim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorwhite"
+        android:textColorLink="@color/colorwhite"
+        app:backgroundTint="@color/colorwhite"
+        android:textCursorDrawable="@null" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="E-posta "
+        android:textColor="@color/colorwhite"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/eposta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorwhite"
+        android:textColorLink="@color/colorwhite"
+        app:backgroundTint="@color/colorwhite"
+        android:textCursorDrawable="@null"  />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telefon"
+        android:textColor="@color/colorwhite"
+        android:textStyle="bold"
+        app:backgroundTint="@color/colorwhite" />
+
+    <EditText
+        android:id="@+id/telefon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:textColor="@color/colorwhite"
+        android:textColorLink="@color/colorwhite"
+        app:backgroundTint="@color/colorwhite"
+        android:textCursorDrawable="@null" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mesaj"
+        android:textColor="@color/colorwhite"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/mesaj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorwhite"
+        android:textColorLink="@color/colorwhite"
+        app:backgroundTint="@color/colorwhite"
+        android:textCursorDrawable="@null" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorwhite"
+        android:text="GÖNDER"
+        android:textAlignment="center"
+        android:textStyle="bold" />
 </LinearLayout>
