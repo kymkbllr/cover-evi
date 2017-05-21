@@ -47,19 +47,5 @@
             android:numColumns="2"
             android:verticalSpacing="3dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="ETKİNLİKLER"
-            android:textColor="@color/colorwhite"
-            tools:textStyle="bold" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lvEtkinlik" />
-
     </LinearLayout>
 </ScrollView>

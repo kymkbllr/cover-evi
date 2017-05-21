@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         yt = (ImageButton) findViewById(R.id.youtube);
 
         durum = (TextView) findViewById(R.id.playerDurum);
-        durum.setText("Radyoyu başlatmak için sağdaki butona basın.");
+        durum.setText("Radyoyu başlatmak için soldaki butona basın.");
 
         calanparca = (TextView) findViewById(R.id.currentplaying);
         calanparca.setText("Çalan parça bilgisi getiriliyor..");
@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //TODO cover evi : durdu ne yazık ki cover evi ,diye exception fırlatıyor.(RECEİVER);
+
         unregisterReceiver(myReceiver);
         stopService(streamService);
     }
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
+//action bardaki logonun ortalanmasıyla alakalı
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.action_bar_header);
         actionBar.setDisplayShowTitleEnabled(false);

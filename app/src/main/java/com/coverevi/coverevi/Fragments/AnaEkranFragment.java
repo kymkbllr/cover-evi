@@ -67,7 +67,7 @@ public class AnaEkranFragment extends Fragment {
 
         new CoverlariGetir().execute();
         new HaberleriGetir().execute();
-        new EtkinlikGetir().execute();
+
     }
 
     public void decreaseLoadCount() {
@@ -118,23 +118,6 @@ public class AnaEkranFragment extends Fragment {
         }
     }
 
-    private class EtkinlikGetir extends AsyncTask<Void, Void, Void> {
-        private String EtkinlikResponse;
 
-        @Override
-        protected void onPostExecute(Void activity) {
-            ListView lvEtkinlik = (ListView) view.findViewById(R.id.lvEtkinlik);
-            lvEtkinlik.setAdapter(new EtkinlikAdapter(getActivity(), this.EtkinlikResponse, 0));
 
-            decreaseLoadCount();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            HttpHandler httpHandler = new HttpHandler("http://coverevi.com/api/etkinlik_getir.php");
-            this.EtkinlikResponse = httpHandler.createGETRequest();
-
-            return null;
-        }
-    }
 }

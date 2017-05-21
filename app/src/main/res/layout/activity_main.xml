@@ -35,38 +35,43 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+
+               >
 
                 <ImageView
                     android:id="@+id/playpausebutton"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/play"
-                    android:onClick="controlPlayer"/>
+                    android:onClick="controlPlayer"
+                    android:src="@drawable/play" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="5dp">
 
                 <TextView
+                    android:id="@+id/currentplaying"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Çalan Şarkı"
-                    android:textColor="@color/colorwhite"
-                    android:id="@+id/currentplaying"/>
+                    android:textColor="@color/colorwhite" />
 
                 <TextView
+                    android:id="@+id/playerDurum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Durduruldu."
-                    android:textColor="@color/colorgray"
-                    android:id="@+id/playerDurum"/>
+                    android:textColor="@color/colorgray" />
+
             </LinearLayout>
+
+
 
         </LinearLayout>
 
