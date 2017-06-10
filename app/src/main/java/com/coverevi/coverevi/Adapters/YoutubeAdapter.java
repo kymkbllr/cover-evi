@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.coverevi.coverevi.Misc.DPPXConverter;
 import com.coverevi.coverevi.R;
@@ -75,7 +76,10 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
                 activity.startActivity(browserIntent);
             }
         });
+        holder.tvYoutube.setText(coverItemList.get(position).title);
+        //bringtofront yazıyı öne getirmesi için.ama işe yaramadı.
 
+/*
         // son itemin margini 0 olacak
         if (position == coverItemList.size() - 1) {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -88,6 +92,7 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
 
             holder.cardView.setLayoutParams(params);
         }
+        */
     }
 
     @Override
@@ -98,11 +103,13 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageButton imageBtn;
         public CardView cardView;
+        public TextView tvYoutube;
 
         public MyViewHolder(View view) {
             super(view);
             imageBtn = (ImageButton) view.findViewById(R.id.ivYoutube);
             cardView = (CardView) view.findViewById(R.id.cwYoutube);
+            tvYoutube = (TextView) view.findViewById(R.id.tvYoutube);
         }
     }
 

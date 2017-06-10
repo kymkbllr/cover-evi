@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/onizleme"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/trans"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/cekim_id"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:text="BİLLURU SEVİYORUM"
+        android:textAlignment="center"
+        android:textColor="@color/colorwhite" />
+</LinearLayout>
