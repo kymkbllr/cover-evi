@@ -57,7 +57,7 @@ public class AnaEkranFragment extends Fragment {
                     .setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // quit application
+                            // uygulamadan çık
                             System.exit(0);
                         }
                     });

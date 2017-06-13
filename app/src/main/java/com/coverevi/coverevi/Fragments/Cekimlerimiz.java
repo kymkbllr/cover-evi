@@ -13,10 +13,6 @@ import android.widget.ListView;
 import com.coverevi.coverevi.HTTP.HttpHandler;
 import com.coverevi.coverevi.R;
 
-/**
- * Created by cezvedici on 26.04.2017.
- */
-
 public class Cekimlerimiz extends Fragment {
     private View view;
     public ListView listView;
@@ -46,7 +42,6 @@ public class Cekimlerimiz extends Fragment {
 
         @Override
         protected Void doInBackground(Integer... params) {
-            // Log.i("COVERLOAD", "Yüklenecek kategori numarası " + params[0]);
             HttpHandler httpHandler = new HttpHandler("http://coverevi.com/api/cekim_getir.php");
             this.response = httpHandler.createGETRequest();
 

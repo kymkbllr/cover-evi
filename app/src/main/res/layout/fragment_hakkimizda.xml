@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Cover Nedir?"
+            android:textColor="@color/colorwhite"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Popüler, eski bir müziğin yeni teknolojik aletler, enstrümanlar ve farklı bir sanatçı ile birlikte o şarkının tekrar yorumlanmasına  Cover  denir."
+            android:textColor="@color/colorwhite" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Biz Kimiz ?"
+            android:textColor="@color/colorwhite"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="2017 yılında interaktif olarak Cover Dünyasına ev sahipliği yapabilecek bir platform olma amacı ile yola çıkmış, tamamen gönüllülük esasları ile maneviyat temellerini ortaya koymuş bir kaç insanız. Amacımız, amatör, yarı profesyonel ve profesyonel sanatçılar arasında ayrım yapmadan, sanata katkıda bulunan her kökenden insana ulaşmak ve sizlere ulaştırmak; Saygı çerçevesinde zaman zaman düzenlenen etkinlikler ile Cover Dünyasını zenginleştirmek ve &quot;Bir Cover Bin Dostluk&quot; adı ile sıkı bağlar kurmaktır. Yolumuzun rast geldiği şehirlerde sahne alan grupların çekimlerini &quot;Cover Evi&quot; bünyesinde gerçekleştirerek, yeni cover'lara imkan yaratmaktır. "
+            android:textColor="@color/colorwhite" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Peki Sizler Neler Yapabilirsiniz?"
+            android:textColor="@color/colorwhite"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Keşfettiğiniz cover'ları sosyal medya hesaplarımızdan veya buradan bizlere gönderip, bir çok insana ulaşmasına vesile olabilirsiniz. Kişisel veya grubunuz ile kayıt ettiğiniz cover'ları da sosyal medya hesaplarımızdan veya buradan bizlere gönderip, bir çok insana ulaşmasına vesile olabilirsiniz."
+            android:textColor="@color/colorwhite" />
+    </LinearLayout>
+</ScrollView>

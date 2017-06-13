@@ -25,11 +25,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coverevi.coverevi.Fragments.AnaEkranFragment;
 import com.coverevi.coverevi.HTTP.HttpHandler;
@@ -280,6 +284,26 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 calanparca.setText(jsonObject.getString("song"));
+
+                // her parça yeniden güncellendiği zaman
+                // anaicerik_fragment ona göre şekil alacak.
+                final LinearLayout playerContainer = (LinearLayout) findViewById(R.id.playerContainer);
+
+                playerContainer.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        final FrameLayout anaicerik_fragment = (FrameLayout) findViewById(R.id.anaicerik_fragment);
+                        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                                anaicerik_fragment.getLayoutParams()
+                        );
+
+                        int height = playerContainer.getMeasuredHeight();
+                        layoutParams.setMargins(0, 0, 0, height);
+
+                        anaicerik_fragment.setLayoutParams(layoutParams);
+                    }
+                });
+
             } catch (org.json.JSONException e) {
                 Log.i("CALANPARCA", e.getMessage());
             }

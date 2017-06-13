@@ -9,10 +9,6 @@ import android.view.ViewGroup;
 
 import com.coverevi.coverevi.R;
 
-/**
- * Created by cezvedici on 26.04.2017.
- */
-
 public class Hakkimizda extends Fragment {
     private View view;
 

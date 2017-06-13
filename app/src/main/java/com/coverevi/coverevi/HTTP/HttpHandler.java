@@ -2,6 +2,7 @@ package com.coverevi.coverevi.HTTP;
 
 import android.util.Log;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -46,7 +47,7 @@ public class HttpHandler {
         return "";
     }
 
-    public String createPOSTRequest(List postData) {
+    public String createPOSTRequest(List<NameValuePair> postData) {
         InputStream inputStream;
 
         try {
@@ -80,9 +81,5 @@ public class HttpHandler {
         }
 
         return "";
-    }
-
-    public void setURL(String URL) {
-        this.URL = URL;
     }
 }
